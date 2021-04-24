@@ -1,41 +1,15 @@
 import './App.css';
 import React, { Component } from 'react'
+import { Route } from "react-router-dom";
+import Xss from './Xss';
 
-const sampleText = "<img src='' onerror='alert(0)' />";
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      sanitized: true
-    };
-  }
-
-  getUnsanitzedWayXSS = () => {
-    return <div dangerouslySetInnerHTML={{ __html: sampleText }} />;
-  }
-
-  getSanitzedWayXSS = () => {
-    return <div> {sampleText} </div>;
-  }
-
-  setSanatizedFlag = () => {
-    this.setState({sanitized: !this.state.sanitized});
-  }
-
-
   render() {
   return (
     <div className="App">
     <header className="App-header">
-
-      <h1>XSS Attacks - React has your back</h1>
-      <p>Sample user input = Hi, {sampleText}</p>
-      <button onClick={this.setSanatizedFlag}>
-        {this.state.sanitized ? "Dangerous Way" : "Sanitized Way"}
-      </button>
-      {this.state.sanitized ? this.getSanitzedWayXSS(): this.getUnsanitzedWayXSS()}
+      <Route path="/xss"><Xss/></Route>
     </header>
     </div>
   );
