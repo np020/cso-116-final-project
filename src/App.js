@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react'
 
-function App() {
+const sampleText = "<img src='' onerror='alert(0)' />";
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      sanitized: true
+    };
+  }
+
+  getUnsanitzedWayXSS = () => {
+    return <div dangerouslySetInnerHTML={{ __html: sampleText }} />;
+  }
+
+  getSanitzedWayXSS = () => {
+    return <div> {sampleText} </div>;
+  }
+
+  setSanatizedFlag = () => {
+    this.setState({sanitized: !this.state.sanitized});
+  }
+
+
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Nick - Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <header className="App-header">
+
+      <h1>XSS Attacks - React has your back</h1>
+      <p>Sample user input = Hi, {sampleText}</p>
+      <button onClick={this.setSanatizedFlag}>
+        {this.state.sanitized ? "Dangerous Way" : "Sanitized Way"}
+      </button>
+      {this.state.sanitized ? this.getSanitzedWayXSS(): this.getUnsanitzedWayXSS()}
+    </header>
     </div>
   );
+}
 }
 
 export default App;
