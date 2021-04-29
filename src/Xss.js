@@ -33,7 +33,7 @@ class Xss extends Component {
       <h1>XSS Attacks - React has your back</h1>
       <p>Sample user input = {sampleText}</p>
       <button onClick={this.setSanatizedFlag}>
-        {this.state.sanitized ? "Dangerous Way" : "Sanitized Way"}
+        {this.state.sanitized ? "Show Dangerous Way" : "Show Sanitized Way"}
       </button>
       {this.state.sanitized ? this.getSanitzedWayXSS(): this.getUnsanitzedWayXSS()}
     </header>

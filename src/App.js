@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react'
 import { Route } from "react-router-dom";
 import Xss from './Xss';
+import Uri from './Uri';
 
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
     <div className="App">
     <header className="App-header">
       <Route path="/xss"><Xss/></Route>
+      <Route path="/uri"><Uri/></Route>
     </header>
     </div>
   );
