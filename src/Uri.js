@@ -33,8 +33,7 @@ class Uri extends Component {
     <div className="App">
     <header className="App-header">
 
-      <h1>URI Schemes - be careful with anchor tags</h1>
-      <p> sample user input </p>
+      <h1>URI Schemes - be careful with dynamic urls</h1>
       <button onClick={this.setSanatizedFlag}>
         {this.state.sanitized ? "Show Dangerous Way" : "Show Sanitized Way"}
       </button>
